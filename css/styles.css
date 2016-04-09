@@ -1,0 +1,17 @@
+body {
+  background-color: #dff79e
+}
+
+.jumbotron {
+  margin-top:40px;
+  text-align: center;
+}
+
+.container {
+  padding-left: 50px;
+  text-align: left;
+}
+
+.form-control {
+  width: 50%;
+}
