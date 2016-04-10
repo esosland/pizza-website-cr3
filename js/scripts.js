@@ -54,11 +54,26 @@ $(document).ready(function() {
   $("form").submit(function(event) {
     event.preventDefault();
 
-    
+    var orderCost = 0;
+    var toppings = [];
+    var size = parseInt($("#size").val());
+    $("input:checkbox[name=toppings]:checked").each(function(){
+      toppings.push($(this).val());
+    });
+    var newPizza = new Pizza (toppings, size);
+    pizzaOrder.addPizza(newPizza);
+    //Output
+    $(".order").show();
+
+      for (var i = 0; i < pizzaOrder.pizzas.length; i++) {
+        $(".order").last().append("<li>" + pizzaOrder.pizzas[i].orderReport() + " for $" + pizzaOrder.pizzas[i].pieCost().toFixed(2) + "</li>")
+      }
+      $(".order").append("<p>Total: $" + pizzaOrder.pieCost() + "</p>")
+      });
 
 
-  $("#placeOrder").click(function() {
-    alert("Your order has been placed! Thanks for ordering from Saucelandia!");
-    location.reload();
+    $("#placeOrder").click(function() {
+      alert("Your order has been placed! Thanks for ordering from Saucelandia!");
+      location.reload();
   });
 });
